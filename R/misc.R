@@ -1,5 +1,10 @@
+#' Write model file and instance to disk
+#'
+#' @param bundle output from \code{\link{expand_mod}}
+#' @param model_file path to save mod string
+#' @param inst_file path to save mod_inst string
+#' @export
 write_model <- function(bundle, model_file = "", inst_file = "") {
-  # takes bundle from expand_model
   # write lavaan model
   if (length(model_file))
     cat(bundle$mod, file=model_file)
