@@ -25,7 +25,12 @@ test_that("remove_var removes single variable", {})
 
 test_that("remove_var removes multiple variables", {})
 
-test_that("expand_mod returns unique args", {})
+test_that("expand_mod returns unique args", {
+  expect_identical(
+    two_factor$args,
+    c(lam_A=.3, lam_B=.6, cov_AxB=.7)
+  )
+})
 
 test_that("expand_mod returned template allows mustache substitution", {})
 
@@ -39,12 +44,13 @@ test_that("expand_mod returned model can fit simulated data", {})
 #make_meas <- make_edge(op='=~')
 #make_cov <-  make_edge(op='~~')
 #partable <- rbind(
-#  a <- make_meas('A', c('A1','A2'), 'lam_A', .3),
-#  make_meas('B', c('B1','B2'), 'lam_B', .6),
-#  make_cov( 'A', 'B', 'cov_AxB'),
+#  a <- make_meas('A', c('A1','A2'), 'lam_A', value=.3),
+#  make_meas('B', c('B1','B2'), 'lam_B', value=.6),
+#  make_cov( 'A', 'B', 'cov_AxB', value=.7),
 #  make_cov( 'A', 'A', ""),
 #  make_cov( 'B', 'B', "")
 #)
-#
+#partable
 #two_factor <- expand_mod(partable)
-
+#
+#devtools::use_data(two_factor, overwrite=TRUE)

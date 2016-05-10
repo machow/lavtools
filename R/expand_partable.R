@@ -27,7 +27,8 @@ remove_var <- function(d, varname, expand=FALSE){
 expand_mod <- function(mod_block) {
   label <- mod_block$label
   value <- mod_block$value
-  args <- sapply(unique(label[label != ""]), function(k) value[k])
+  args <- sapply(unique(label[label != ""]),
+                 function(k) as.numeric(mod_block[match(k,label), 'value']))
 
   mod_pars <- mod_block
   mod_pars$label <- ifelse(label == "", as.character(value), label)
